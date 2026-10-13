@@ -14,6 +14,8 @@ o.winborder = "rounded"
 o.pumborder = "rounded"
 o.pumheight = 12
 o.termguicolors = false
+o.guicursor =
+  "n-sm-c:block-blinkon500-blinkoff500,i-ci-ve:ver25-blinkon500-blinkoff500,r-cr-o:hor20-blinkon500-blinkoff500,v-V:block"
 o.wildmode = "noselect:lastused,full"
 o.wildoptions = "pum,tagfile"
 
