@@ -3,6 +3,7 @@
   pkgs,
   ...
 }:
+
 let
   config = pkgs.vimUtils.buildVimPlugin {
     pname = "editor-config";
@@ -26,6 +27,9 @@ in
       ripgrep
     ];
   };
+
+  fonts.fontconfig.enable = lib.mkDefault true;
+  fonts.packages = [ pkgs.nerd-fonts.symbols-only ];
 
   programs.neovim = {
     enable = true;
