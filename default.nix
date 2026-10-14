@@ -25,7 +25,6 @@ in
       lua-language-server
       stylua
       ripgrep
-      wl-clipboard
     ];
   };
 
