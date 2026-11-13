@@ -1,56 +1,25 @@
 {
-  lib,
   pkgs,
   ...
 }:
 
-let
-  config = pkgs.vimUtils.buildVimPlugin {
-    pname = "editor-config";
-    version = "0";
-    src = lib.fileset.toSource {
-      root = ./.;
-      fileset = ./lua;
-    };
-    doCheck = false;
-  };
-in
 {
-
   environment = {
-    sessionVariables.MANPAGER = "nvim +Man!";
-    systemPackages = with pkgs; [
-      nixd
-      nixfmt
-      lua-language-server
-      stylua
-      ripgrep
-    ];
+    etc."vimrc".text = ''
+      set nocompatible
+      set clipboard=unnamedplus
+      set fillchars=vert:\|,fold:\ ,eob:\ 
+      set laststatus=3
+      set noshowmode
+      set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+      syntax on
+      filetype on
+    '';
   };
 
-  fonts.fontconfig.enable = lib.mkDefault true;
-  fonts.packages = [ pkgs.nerd-fonts.symbols-only ];
-
-  programs.neovim = {
+  programs.vim = {
     enable = true;
     defaultEditor = true;
-
-    configure = {
-      packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [
-          nvim-treesitter.withAllGrammars
-          nvim-treesitter-textobjects
-          nvim-lspconfig
-          conform-nvim
-          mini-nvim
-          config
-        ];
-      };
-
-      customLuaRC = ''
-        vim.g.nixpkgs_path = "${pkgs.path}"
-        require("editor")
-      '';
-    };
+    package = pkgs.vim-full;
   };
 }
