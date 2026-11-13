@@ -12,7 +12,10 @@
       set laststatus=3
       set expandtab tabstop=4 shiftwidth=4 softtabstop=4
       set number
-      highlight Visual cterm=reverse gui=reverse
+
+      function! s:VisualReverse() abort
+        highlight! Visual cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
+      endfunction
 
       function! s:SendCursorShape(shape) abort
         let l:seq = printf("\033[%sq", a:shape)
@@ -34,6 +37,11 @@
 
       syntax on
       filetype on
+      call s:VisualReverse()
+      augroup vim_visual_highlight
+        autocmd!
+        autocmd ColorScheme,SourcePost * call s:VisualReverse()
+      augroup END
     '';
   };
 
