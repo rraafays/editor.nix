@@ -10,7 +10,6 @@
       set clipboard=unnamedplus
       set fillchars=vert:\|,fold:\ ,eob:\ 
       set laststatus=3
-      set noshowmode
       set expandtab tabstop=4 shiftwidth=4 softtabstop=4
       set number
       highlight Visual cterm=reverse gui=reverse
