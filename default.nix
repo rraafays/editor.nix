@@ -15,6 +15,8 @@
 
       function! s:VisualReverse() abort
         highlight! Visual cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
+        highlight! LineNr cterm=NONE ctermfg=15 ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+        highlight! CursorLineNr cterm=NONE ctermfg=15 ctermbg=NONE gui=NONE guifg=#f6f5f4 guibg=NONE
       endfunction
 
       function! s:SendCursorShape(shape) abort
