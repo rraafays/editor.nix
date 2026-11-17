@@ -7,7 +7,9 @@
   environment = {
     etc."vimrc".text = ''
       set nocompatible
-      set clipboard=unnamedplus
+      if has('clipboard') && (exists('$DISPLAY') || exists('$WAYLAND_DISPLAY'))
+        set clipboard=unnamedplus
+      endif
       set fillchars=vert:\|,fold:\ ,eob:\ 
       set laststatus=3
       set expandtab tabstop=4 shiftwidth=4 softtabstop=4
